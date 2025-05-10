@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
+import "../styles/CreateRoom.css";
 
 const CreateRoom = () => {
     const [roomId, setRoomId] = useState("");
@@ -40,73 +41,57 @@ const CreateRoom = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex flex-col items-center pt-20 px-4">
-            <div className="w-full max-w-md bg-white rounded-lg shadow-md p-6">
-                <h1 className="text-2xl font-bold text-center mb-6">
-                    Mini Google Docs
-                </h1>
+        <div className="container">
+            <div className="card">
+                <h1 className="title">Mini Google Docs</h1>
 
-                <button
-                    onClick={createNewDocument}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded mb-6 flex items-center justify-center"
-                >
-                    <span className="mr-2">+</span> Create New Document
+                <button onClick={createNewDocument} className="create-button">
+                    <span className="plus-icon">+</span> Create New Document
                 </button>
 
-                <div className="border-t border-gray-300 my-6"></div>
+                <div className="divider"></div>
 
-                <form onSubmit={joinRoom} className="mb-6">
-                    <label className="block text-gray-700 text-sm font-bold mb-2">
+                <form onSubmit={joinRoom} className="form">
+                    <label className="label">
                         Or join an existing document:
                     </label>
-                    <div className="flex">
+                    <div className="input-group">
                         <input
                             type="text"
                             value={roomId}
                             onChange={(e) => setRoomId(e.target.value)}
                             placeholder="Paste document ID"
-                            className="flex-grow border rounded-l py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline"
+                            className="input"
                         />
-                        <button
-                            type="submit"
-                            className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-r"
-                        >
+                        <button type="submit" className="join-button">
                             Join
                         </button>
                     </div>
                 </form>
 
                 {loading ? (
-                    <p className="text-center text-gray-600">
-                        Loading documents...
-                    </p>
+                    <p className="message">Loading documents...</p>
                 ) : documents.length > 0 ? (
                     <>
-                        <h2 className="font-semibold text-lg mb-3">
-                            Recent Documents
-                        </h2>
-                        <ul className="divide-y divide-gray-200">
+                        <h2 className="subtitle">Recent Documents</h2>
+                        <ul className="document-list">
                             {documents.map((doc) => (
-                                <li key={doc.id} className="py-2">
+                                <li key={doc.id} className="document-item">
                                     <button
                                         onClick={() =>
                                             navigate(`/documents/${doc.id}`)
                                         }
-                                        className="w-full text-left hover:bg-gray-50 p-2 rounded flex justify-between items-center"
+                                        className="document-button"
                                     >
                                         <span>{doc.title}</span>
-                                        <span className="text-blue-500 text-sm">
-                                            Open
-                                        </span>
+                                        <span className="open-text">Open</span>
                                     </button>
                                 </li>
                             ))}
                         </ul>
                     </>
                 ) : (
-                    <p className="text-center text-gray-600">
-                        No documents found
-                    </p>
+                    <p className="message">No documents found</p>
                 )}
             </div>
         </div>

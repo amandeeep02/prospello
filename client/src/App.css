@@ -1,42 +1,212 @@
+/* Add these styles to your existing index.css */
+
+/* Animations */
+@keyframes fade-in-down {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+.animate-fade-in-down {
+    animation: fade-in-down 0.3s ease-out forwards;
+}
+
+/* Tailwind dark mode */
+:root {
+    color-scheme: light;
+}
+
+.dark {
+    color-scheme: dark;
+}
+
+/* Fix for Quill editor in dark mode */
+.dark .ql-toolbar {
+    background-color: #1f2937 !important;
+    border-color: #374151 !important;
+}
+
+.dark .ql-toolbar .ql-stroke {
+    stroke: #e5e7eb !important;
+}
+
+.dark .ql-toolbar .ql-fill {
+    fill: #e5e7eb !important;
+}
+
+.dark .ql-toolbar .ql-picker {
+    color: #e5e7eb !important;
+}
+
+.dark .ql-editor {
+    color: #e5e7eb !important;
+    background-color: #1f2937 !important;
+}
+
+/* Enhanced Quill styling */
+.ql-container {
+    border: none !important;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+    font-size: 16px !important;
+}
+
+.ql-toolbar {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border: none !important;
+    border-bottom: 1px solid #e5e7eb !important;
+    padding: 12px 15px !important;
+}
+
+.ql-editor {
+    min-height: calc(100vh - 12rem);
+    padding: 2rem !important;
+    line-height: 1.5 !important;
+}
+
+/* Custom cursor styling */
+.custom-cursor {
+    animation: blink 1.2s infinite;
+    z-index: 20;
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.6;
+    }
+}
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+    height: 6em;
+    padding: 1.5em;
+    will-change: filter;
+    transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+    filter: drop-shadow(0 0 2em #646cffaa);
 }
 .logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+    filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
 @keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+    a:nth-of-type(2) .logo {
+        animation: logo-spin infinite 20s linear;
+    }
 }
 
 .card {
-  padding: 2em;
+    padding: 2em;
 }
 
 .read-the-docs {
-  color: #888;
+    color: #888;
+}
+/* Modern styling for the editor */
+
+/* Dark mode support */
+.dark-mode {
+    color-scheme: dark;
+}
+
+.dark-mode .ql-toolbar {
+    background-color: #2d3748 !important;
+    border-color: #4a5568 !important;
+}
+
+.dark-mode .ql-toolbar .ql-stroke {
+    stroke: #e2e8f0 !important;
+}
+
+.dark-mode .ql-toolbar .ql-fill {
+    fill: #e2e8f0 !important;
+}
+
+.dark-mode .ql-editor {
+    color: #e2e8f0 !important;
+    background-color: #2d3748 !important;
+}
+
+.dark-mode .ql-picker-label {
+    color: #e2e8f0 !important;
+}
+
+/* Enhanced editor styling */
+.ql-container {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif !important;
+    border: none !important;
+    height: calc(100% - 42px) !important;
+}
+
+.ql-toolbar {
+    border-bottom: 1px solid #e5e7eb !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: white;
+    padding: 12px 15px !important;
+}
+
+.ql-editor {
+    padding: 2rem !important;
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    height: 100% !important;
+}
+
+/* Cursor animations */
+.custom-cursor {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* General app styling improvements */
+body {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.editor-container {
+    height: 100%;
+}
+
+/* Transition effects */
+.transition-all {
+    transition: all 0.3s ease;
 }

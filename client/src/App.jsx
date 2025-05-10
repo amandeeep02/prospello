@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CreateRoom from "./pages/CreateRoom";
+import './App.css';
 import { Editor } from "./pages/Editor";
 
 function App() {
